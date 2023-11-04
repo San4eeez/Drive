@@ -4,8 +4,10 @@
 Bus bus = new Bus("А777АА", 50, 3, 0);
 Truck truck = new Truck("П644ОН", 60, 5, 0);
 int what;
-
-
+Console.WriteLine("Выбери ТС\n1 - Автобус.\n2 - Картофелевоз");
+Console.Write("Ввод: ");
+int car = int.Parse(Console.ReadLine())-1;
+Console.Clear();
 while (true)
 {
 
@@ -17,15 +19,29 @@ while (true)
     if (what == 1)
     {
         Console.Clear();
-        bus.Out();
+
+
+        if (car == 0)
+        {
+            bus.Out();
+        } else truck.Out();
+
     }
 
     if (what == 2)
     {
         Console.Clear();
-        Console.WriteLine("\nВведи дальность поездки: ");
+        Console.Write("Введи дальность поездки: ");
         float trip = int.Parse(Console.ReadLine());
-        bus.Move(trip);
+
+
+        if (car == 0)
+        {
+            bus.Move(trip);
+        }
+        else truck.Move(trip);
+
+        Console.Clear();
     }
 
 
@@ -43,14 +59,25 @@ while (true)
         
         if (what2 == 1)
         {
-            bus.CargoAdd(cheslo);
+
+
+            if (car == 0)
+            {
+                bus.CargoAdd(cheslo);
+            }
+            else truck.CargoAdd(cheslo);
+
+
             Console.Clear();
         }
 
         if (what2 == 2)
         {
-            bus.CargoRemove(cheslo);
-            Console.Clear();
+            if (car == 0)
+            {
+                bus.CargoRemove(cheslo);
+            }
+            else truck.CargoRemove(cheslo);
         }
 
     }
@@ -69,13 +96,27 @@ while (true)
 
         if (what2 == 1)
         {
-            bus.speedAdd(cheslo);
+
+
+            if (car == 0)
+            {
+                bus.speedAdd(cheslo);
+            }
+            else truck.speedAdd(cheslo);
+            Console.Clear();
+
+
             Console.Clear();
         }
 
         if (what2 == 2)
         {
-            bus.speedRemove(cheslo);
+
+            if (car == 0)
+            {
+                bus.speedRemove(cheslo);
+            }
+            else truck.speedRemove(cheslo);
             Console.Clear();
         }
     }
@@ -84,7 +125,24 @@ while (true)
     {
         Console.Clear();
         Console.Write("Сколько заливать: ");
-        bus.zaprawka(float.Parse(Console.ReadLine()));
+
+        if (car == 0)
+        {
+            bus.zaprawka(float.Parse(Console.ReadLine()));
+        }
+        else truck.zaprawka(float.Parse(Console.ReadLine()));
+
+
     }
+
+    if(what == 6)
+    {
+        Console.Clear();
+        Console.WriteLine("\"Выбери ТС\\n1 - Автобус.\\n2 - Картофелевоз\"");
+        Console.Write("Ввод: ");
+        car = int.Parse(Console.ReadLine()) - 1;
+    }
+
+
 
 }

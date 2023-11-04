@@ -12,7 +12,7 @@ namespace Drive
         float fuel;
         protected float flow;
         float currentDistance;
-        float speed = 0;
+        float speed = 40;
         float maxSpeed = 120;
         float maxFuel = 100;
 
@@ -43,7 +43,7 @@ namespace Drive
             }
             else if ((speed + addspeed) > maxSpeed)
             {
-                Console.WriteLine($"Мы гнать больше {maxSpeed}. Набрали максимум.");
+                Console.WriteLine($"Мы не можем гнать больше {maxSpeed}. Набрали максимум.");
                 speed = maxSpeed;
                 flow += 0.25F + (maxSpeed - speed) * 0.25F;
             }
