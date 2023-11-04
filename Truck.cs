@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Drive
 {
-    internal class Bus:Logik
+    internal class Truck : Logik
     {
         protected int cargo;
-        protected int maxCargo=50;
+        protected int maxCargo = 50;
 
-        public Bus(string nom, float fuel, float flow,int peoples):base(nom,fuel,flow) 
+        public Truck(string nom, float fuel, float flow, int peoples) : base(nom, fuel, flow)
         {
             this.cargo = peoples;
         }
@@ -20,12 +19,13 @@ namespace Drive
 
 
 
+
         public void Out()
         {
-            Console.WriteLine($"Человек в салоне: {cargo}");
+            Console.WriteLine($"Мешков картошки: {cargo}");
             base.OutInfo();
-            
-            
+
+
         }
 
         public void CargoAdd(int gruz)
@@ -41,7 +41,7 @@ namespace Drive
             {
                 Console.WriteLine($"Мы не можем взять больше {maxCargo}. Набрали максимум.");
                 cargo = maxCargo;
-                flow += 0.25F +(maxCargo - cargo) * 0.25F;
+                flow += 0.25F + (maxCargo - cargo) * 0.25F;
                 speedRemove((maxCargo - cargo) * 0.2F);
             }
 

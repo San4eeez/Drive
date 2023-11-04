@@ -1,16 +1,15 @@
 ﻿using Drive;
 
-
-
 //номер топливо расход груз. двигатель всегда потребляет
-Bus bus = new Bus("А777АА", 50, 3,0);
-
-
+Bus bus = new Bus("А777АА", 50, 3, 0);
+Truck truck = new Truck("П644ОН", 60, 5, 0);
 int what;
 
 
 while (true)
 {
+
+   
     
     Console.WriteLine("Меню действий\n1 - Вывести информацию об ТС\n2 - Ехать\n3 - Изменить нагрузку\n4 - Изменить скорость\n5 - Заправка\n6 - Сменить ТС");
     Console.Write("Ввод: ");
@@ -18,7 +17,7 @@ while (true)
     if (what == 1)
     {
         Console.Clear();
-        bus.OutBus();
+        bus.Out();
     }
 
     if (what == 2)
@@ -41,7 +40,7 @@ while (true)
         Console.Write("Насколько изменилось кол-во: ");
         int cheslo = int.Parse(Console.ReadLine());
 
-
+        
         if (what2 == 1)
         {
             bus.CargoAdd(cheslo);
@@ -88,7 +87,4 @@ while (true)
         bus.zaprawka(float.Parse(Console.ReadLine()));
     }
 
-
-
 }
-
