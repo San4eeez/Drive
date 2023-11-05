@@ -22,6 +22,7 @@ namespace Drive
 
         public void Out()
         {
+            Console.WriteLine($"Расход: {(cargo * 0.25F) + (RetSpees() * 0.25F)}");
             Console.WriteLine($"Человек в салоне: {cargo}");
             base.OutInfo();
             
@@ -34,15 +35,13 @@ namespace Drive
             if ((cargo + gruz) <= maxCargo && gruz > 0)
             {
                 cargo += gruz;
-                flow += gruz * 0.25F;
-                speedRemove(gruz * 0.2F);
+                
             }
             else if ((cargo + gruz) > maxCargo)
             {
                 Console.WriteLine($"Мы не можем взять больше {maxCargo}. Набрали максимум.");
                 cargo = maxCargo;
-                flow += 0.25F +(maxCargo - cargo) * 0.25F;
-                speedRemove((maxCargo - cargo) * 0.2F);
+                
             }
 
         }
@@ -52,13 +51,16 @@ namespace Drive
             if ((cargo - gruz) >= 0)
             {
                 cargo -= gruz;
-                flow -= gruz * 0.25F;
-                speedAdd(gruz * 0.2F);
+                
             }
             else { Console.WriteLine("Не может быть меньше 0"); }
 
         }
 
+        public float ReturnCargo()
+        {
+            return cargo;
+        }
 
 
 

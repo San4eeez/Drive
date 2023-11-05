@@ -37,9 +37,14 @@ while (true)
 
         if (car == 0)
         {
-            bus.Move(trip);
+            float x = bus.ReturnCargo();
+            bus.Move(trip, x);
         }
-        else truck.Move(trip);
+        else
+        {
+            float x = truck.ReturnCargo();
+            truck.Move(trip, x); 
+        }
 
         Console.Clear();
     }

@@ -17,6 +17,10 @@ namespace Drive
         float maxFuel = 100;
 
 
+        public float RetSpees()
+        {
+            return speed;
+        }
 
         
         public Logik(string nom,float fuel,float flow)
@@ -30,7 +34,7 @@ namespace Drive
 
         public void OutInfo()
         {
-            Console.WriteLine($"Информация\nНомер: {nom}\nТопливо: {fuel}\nРасход: {flow}\nСкорость: {speed}");
+            Console.WriteLine($"Информация\nНомер: {nom}\nТопливо: {fuel}\nСкорость: {speed}");
             Console.WriteLine($"Пройденная дистанция: {currentDistance}\n---------------");
         }
 
@@ -39,13 +43,13 @@ namespace Drive
             if ((speed + addspeed) <= maxSpeed && addspeed > 0)
             {
                 speed += addspeed;
-                flow += addspeed * 0.25F;
+                
             }
             else if ((speed + addspeed) > maxSpeed)
             {
                 Console.WriteLine($"Мы не можем гнать больше {maxSpeed}. Набрали максимум.");
                 speed = maxSpeed;
-                flow += 0.25F + (maxSpeed - speed) * 0.25F;
+                
             }
 
         }
@@ -55,7 +59,7 @@ namespace Drive
             if ((speed - addspeed) >= 0)
             {
                 speed -= addspeed;
-                flow -= addspeed * 0.25F;
+               
             }
             else { speed=0; }
 
@@ -74,16 +78,17 @@ namespace Drive
             }
         }
 
-        public void Move(float km)
+        public void Move(float km,float cargo)
         {
             float time;
+            float realFlow = (cargo * 0.25F)+(speed*0.25F);
 
             if (speed > 0)
             {
 
 
 
-                float ostatok = fuel - (km * flow / 100);
+                float ostatok = fuel - (km * realFlow / 100);
 
 
                 if (ostatok >= 0)
@@ -96,14 +101,14 @@ namespace Drive
                 }
                 if (ostatok < 0)
                 {
-                    float tempdist = km - (fuel / (flow / 100));
+                    float tempdist = km - (fuel / (realFlow / 100));
                     Console.WriteLine("Мы не доехали, осталось ещё " + tempdist);
                     ostatok = 0;
                     fuel = 0;
                     currentDistance += tempdist;
                     Console.WriteLine("Чтобы доехать нужно заправиться. Вводи сколько зальём: ");
                     zaprawka(float.Parse(Console.ReadLine()));
-                    Move(tempdist);
+                    Move(tempdist,cargo);
 
                 }
 
