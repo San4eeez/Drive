@@ -1,8 +1,20 @@
 ﻿using Drive;
+//Райан Гослинг...
+Console.ForegroundColor = ConsoleColor.Magenta;
+string hello = @"
+________       _____             
+___  __ \_________(_)__   ______ 
+__  / / /_  ___/_  /__ | / /  _ \
+_  /_/ /_  /   _  / __ |/ //  __/
+/_____/ /_/    /_/  _____/ \___/ 
+                                 
 
-//номер топливо расход груз. двигатель всегда потребляет
-Bus bus = new Bus("А777АА", 50, 3, 0);
-Truck truck = new Truck("П644ОН", 60, 5, 0);
+";
+Console.WriteLine(hello);
+Console.ResetColor();
+//номер топливо груз
+Bus bus = new Bus("А777АА", 50, 0);
+Truck truck = new Truck("П644ОН", 60, 0);
 int what;
 Console.WriteLine("Выбери ТС\n1 - Автобус.\n2 - Картофелевоз");
 Console.Write("Ввод: ");
@@ -11,9 +23,10 @@ Console.Clear();
 while (true)
 {
 
-   
-    
+
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Меню действий\n1 - Вывести информацию об ТС\n2 - Ехать\n3 - Изменить нагрузку\n4 - Изменить скорость\n5 - Заправка\n6 - Сменить ТС");
+    Console.ResetColor();
     Console.Write("Ввод: ");
     what = int.Parse(Console.ReadLine());
     if (what == 1)
@@ -73,7 +86,7 @@ while (true)
             else truck.CargoAdd(cheslo);
 
 
-            Console.Clear();
+           
         }
 
         if (what2 == 2)
@@ -108,10 +121,7 @@ while (true)
                 bus.speedAdd(cheslo);
             }
             else truck.speedAdd(cheslo);
-            Console.Clear();
-
-
-            Console.Clear();
+            
         }
 
         if (what2 == 2)
@@ -122,7 +132,7 @@ while (true)
                 bus.speedRemove(cheslo);
             }
             else truck.speedRemove(cheslo);
-            Console.Clear();
+            
         }
     }
 

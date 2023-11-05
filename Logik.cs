@@ -10,7 +10,7 @@ namespace Drive
     {
         string nom;
         float fuel;
-        protected float flow;
+        
         float currentDistance;
         float speed = 40;
         float maxSpeed = 120;
@@ -23,19 +23,20 @@ namespace Drive
         }
 
         
-        public Logik(string nom,float fuel,float flow)
+        public Logik(string nom,float fuel)
         {
             this.nom = nom;
             this.fuel = fuel;
-            this.flow = flow;
+           
         }
 
        
 
         public void OutInfo()
         {
+
             Console.WriteLine($"Информация\nНомер: {nom}\nТопливо: {fuel}\nСкорость: {speed}");
-            Console.WriteLine($"Пройденная дистанция: {currentDistance}\n---------------");
+            Console.WriteLine($"Пройденная дистанция: {currentDistance}\n-----------------------------");
         }
 
         public void speedAdd(float addspeed)

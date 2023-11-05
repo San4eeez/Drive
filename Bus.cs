@@ -12,7 +12,7 @@ namespace Drive
         protected int cargo;
         protected int maxCargo=50;
 
-        public Bus(string nom, float fuel, float flow,int peoples):base(nom,fuel,flow) 
+        public Bus(string nom, float fuel,int peoples):base(nom,fuel) 
         {
             this.cargo = peoples;
         }
@@ -39,7 +39,7 @@ namespace Drive
             }
             else if ((cargo + gruz) > maxCargo)
             {
-                Console.WriteLine($"Мы не можем взять больше {maxCargo}. Набрали максимум.");
+                Console.WriteLine($"Мы не можем взять больше {maxCargo}. Набрали максимум.\n\n");
                 cargo = maxCargo;
                 
             }
@@ -53,7 +53,7 @@ namespace Drive
                 cargo -= gruz;
                 
             }
-            else { Console.WriteLine("Не может быть меньше 0"); }
+            else { Console.WriteLine("Тогда кол-во груза станет отрицательным. Выгружаю до конца.\n\n"); cargo = 0; }
 
         }
 
