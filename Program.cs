@@ -13,7 +13,7 @@ _  /_/ /_  /   _  / __ |/ //  __/
 Console.WriteLine(hello);
 Console.ResetColor();
 //номер топливо груз
-Bus bus = new Bus("А777АА", 50, 0);
+Bus bus = new Bus("А777АА", 10, 0);
 Truck truck = new Truck("П644ОН", 60, 0);
 int what;
 
@@ -44,7 +44,13 @@ while (true)
     {
         Console.Clear();
         Console.Write("Введи дальность поездки: ");
+        
         float trip = int.Parse(Console.ReadLine());
+        if (trip < 0)
+        {
+            Console.WriteLine("Дружок пирожок, ты ввёл неправильное значение. Клуб шутников и кожевенного ремесла двумя этажами ниже.\n\nЕсли усёк, то нажми любую кнопку");
+            Console.ReadKey();
+        }
 
 
         if (car == 0)
