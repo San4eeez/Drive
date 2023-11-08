@@ -16,6 +16,7 @@ Console.ResetColor();
 Bus bus = new Bus("А777АА", 50, 0);
 Truck truck = new Truck("П644ОН", 60, 0);
 int what;
+
 Console.WriteLine("Выбери ТС\n1 - Автобус.\n2 - Картофелевоз");
 Console.Write("Ввод: ");
 int car = int.Parse(Console.ReadLine())-1;
@@ -32,12 +33,10 @@ while (true)
     if (what == 1)
     {
         Console.Clear();
-
-
         if (car == 0)
         {
-            bus.Out();
-        } else truck.Out();
+            bus.OutInfo();
+        } else truck.OutInfo();
 
     }
 
@@ -51,12 +50,12 @@ while (true)
         if (car == 0)
         {
             float x = bus.ReturnCargo();
-            bus.Move(trip, x);
+            bus.Action(2,trip, x);
         }
         else
         {
             float x = truck.ReturnCargo();
-            truck.Move(trip, x); 
+            truck.Action(2,trip, x); 
         }
 
         Console.Clear();
@@ -75,28 +74,14 @@ while (true)
         int cheslo = int.Parse(Console.ReadLine());
 
         
-        if (what2 == 1)
-        {
-
-
+       
             if (car == 0)
             {
-                bus.CargoAdd(cheslo);
+                bus.Activ(what2,cheslo);
             }
-            else truck.CargoAdd(cheslo);
+            else truck.Activ(what2, cheslo);
 
 
-           
-        }
-
-        if (what2 == 2)
-        {
-            if (car == 0)
-            {
-                bus.CargoRemove(cheslo);
-            }
-            else truck.CargoRemove(cheslo);
-        }
 
     }
 
@@ -118,9 +103,9 @@ while (true)
 
             if (car == 0)
             {
-                bus.speedAdd(cheslo);
+                bus.Action(4,1,cheslo);
             }
-            else truck.speedAdd(cheslo);
+            else truck.Action(4, 1, cheslo);
             
         }
 
@@ -129,10 +114,10 @@ while (true)
 
             if (car == 0)
             {
-                bus.speedRemove(cheslo);
+                bus.Action(4, 2, cheslo);
             }
-            else truck.speedRemove(cheslo);
-            
+            else truck.Action(4, 1, cheslo);
+
         }
     }
 
@@ -143,9 +128,9 @@ while (true)
 
         if (car == 0)
         {
-            bus.zaprawka(float.Parse(Console.ReadLine()));
+            bus.Action(5, (float.Parse(Console.ReadLine())),0);
         }
-        else truck.zaprawka(float.Parse(Console.ReadLine()));
+        else truck.Action(5, (float.Parse(Console.ReadLine())), 0);
 
 
     }

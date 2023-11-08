@@ -18,18 +18,28 @@ namespace Drive
         }
 
 
+        public void Activ(int cheslo1,int cheslo2)
+        {
+            if (cheslo1 == 1)
+            {
+                CargoAdd(cheslo2);
+
+            } else if (cheslo1 == 2) 
+            {
+                CargoRemove(cheslo2);
+            }
+        }
 
 
-        public void Out()
+
+        public override void OutInfo()
         {
             Console.WriteLine($"Расход: {(cargo * 0.25F) + (RetSpees() * 0.25F)}");
             Console.WriteLine($"Человек в салоне: {cargo}");
-            base.OutInfo();
-            
-            
+            base.OutInfo();  
         }
 
-        public void CargoAdd(int gruz)
+        private void CargoAdd(int gruz)
         {
 
             if ((cargo + gruz) <= maxCargo && gruz > 0)
@@ -46,7 +56,7 @@ namespace Drive
 
         }
 
-        public void CargoRemove(int gruz)
+        private void CargoRemove(int gruz)
         {
             if ((cargo - gruz) >= 0)
             {

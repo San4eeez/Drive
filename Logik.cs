@@ -32,14 +32,14 @@ namespace Drive
 
        
 
-        public void OutInfo()
+        public virtual void OutInfo()
         {
 
             Console.WriteLine($"Информация\nНомер: {nom}\nТопливо: {fuel}\nСкорость: {speed}");
             Console.WriteLine($"Пройденная дистанция: {currentDistance}\n-----------------------------");
         }
 
-        public void speedAdd(float addspeed)
+        protected void speedAdd(float addspeed)
         {
             if ((speed + addspeed) <= maxSpeed && addspeed > 0)
             {
@@ -55,7 +55,7 @@ namespace Drive
 
         }
 
-        public void speedRemove(float addspeed)
+        protected void speedRemove(float addspeed)
         {
             if ((speed - addspeed) >= 0)
             {
@@ -67,7 +67,7 @@ namespace Drive
         }
 
 
-        public void zaprawka(float top)
+        protected void zaprawka(float top)
         {
             if (top + fuel < maxFuel)
             {
@@ -79,7 +79,7 @@ namespace Drive
             }
         }
 
-        public void Move(float km,float cargo)
+        protected void Move(float km,float cargo)
         {
             float time;
             float realFlow = (cargo * 0.25F)+(speed*0.25F);
@@ -117,6 +117,34 @@ namespace Drive
             else
             {
                 Console.WriteLine("Скорость должна быть положительной, а так мы не поедем.");
+            }
+        }
+
+
+        public void Action(int what3,float znach1,float znach2)
+        {
+            switch (what3)
+            {
+                case 1:
+                    OutInfo();
+                    break;
+                case 2:
+                    Move(znach1, znach2);
+                    break;
+                case 4:
+                    if(znach1 == 1)
+                    {
+                        speedAdd(znach2);
+                    } else if(znach1 == 2)
+                    {
+                        speedRemove(znach2);
+                    }
+                    break;
+                case 5:
+                    zaprawka(znach1);
+                    break;
+
+
             }
         }
 
