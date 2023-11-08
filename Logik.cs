@@ -69,14 +69,25 @@ namespace Drive
 
         protected void zaprawka(float top)
         {
-            if (top + fuel < maxFuel)
+
+            if (top > 0)
             {
-                this.fuel += top;
-            } else
-            {
-                Console.WriteLine($"Бак ёмкостью {maxFuel}, больше не взять. Залил максимум.");
-                this.fuel = maxFuel;
+                if (top + fuel < maxFuel)
+                {
+                    this.fuel += top;
+                }
+                else
+                {
+                    Console.WriteLine($"Бак ёмкостью {maxFuel}, больше не взять. Залил максимум.");
+                    this.fuel = maxFuel;
+                }
             }
+            else
+            {
+                Console.WriteLine("Дружок пирожок, ты ввёл неправильное значение. Клуб шутников и кожевенного ремесла двумя этажами ниже.");
+            }
+
+            
         }
 
         protected void Move(float km,float cargo)
@@ -86,8 +97,6 @@ namespace Drive
 
             if (speed > 0)
             {
-
-
 
                 float ostatok = fuel - (km * realFlow / 100);
 
@@ -107,9 +116,23 @@ namespace Drive
                     ostatok = 0;
                     fuel = 0;
                     currentDistance += tempdist;
-                    Console.WriteLine("Чтобы доехать нужно заправиться. Вводи сколько зальём: ");
-                    zaprawka(float.Parse(Console.ReadLine()));
-                    Move(tempdist,cargo);
+                    Console.WriteLine($"Пройденная дистанция: {currentDistance}");
+                    
+
+
+                    Console.WriteLine("Едем дальше?\n1 - да\n2 - нет");
+                    int what = int.Parse(Console.ReadLine());
+                    if (what == 1)
+                    {
+                        Console.WriteLine("Чтобы доехать нужно заправиться. Вводи сколько зальём: ");
+                        zaprawka(float.Parse(Console.ReadLine()));
+                        Move(tempdist,cargo);
+                    } else if(what == 2)
+                    {
+                        Console.WriteLine("Ну и хрен с вами золотые рыбки.");//крылатая фраза
+                    }
+
+
 
                 }
 
